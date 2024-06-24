@@ -57,9 +57,9 @@ h3 {
 	margin-bottom: 1rem;
 }
 
-h4 {
+/* h4 {
 	font: 20px/1.2 var(--font-title);
-}
+} */
 
 h5 {
 	font: 700 20px/1 var(--font);
@@ -95,13 +95,13 @@ p a {
 
 main {
 	display: grid;
-	grid-template-columns: 1fr;
-	grid-gap: 1.2rem;
+	grid-template-columns: 1fr 1fr 1fr 1fr 3fr 3fr; /* Columns 5 and 6 are now wider */
+    gap: 20px;
 }
 
 @media (min-width: 700px) {
 	main {
-		grid-template-columns: repeat(4, 1fr) 23%;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1.6fr;
 		grid-template-rows: repeat(5, auto);
 	}
 }
@@ -174,12 +174,6 @@ main aside {
 	}
 }
 
-
-
-.project1
-{
-	grid-column: 1 / 3;
-}
 
 .cssgrid-collection {
 	grid-column: 1 / -1;
@@ -406,25 +400,6 @@ aside > div > div {
 }
 
 
-.menu {
-	margin: 1.5rem 0;
-}
-
-@media (min-width: 1024px) {
-	.menu {
-		margin: 0;
-	}
-}
-
-.menu figure {
-	height: 100%;
-}
-
-.menu img {
-	height: 90%;
-	object-fit: cover;
-	object-position: left;
-}
 
 .cssgrid-collection {
 	display: flex;
@@ -500,6 +475,18 @@ aside > div > div {
 	grid-column: 2;
 }
 
+
+
+.github-activities:hover img,
+.tech:hover img,
+.menu:hover img,
+.mypicture:hover img,
+.project1:hover img,
+.project2:hover img,
+.cssgrid-collection__image:hover img {
+	filter: grayscale(0);
+}
+
 /*Project 1*/
 .project1 {
 	padding-bottom: 1rem;
@@ -513,12 +500,167 @@ aside > div > div {
 	}
 }
 
-.github-activities:hover img,
-.tech:hover img,
-.menu:hover img,
-.mypicture:hover img,
-.project1:hover img,
-.project2:hover img,
-.cssgrid-collection__image:hover img {
-	filter: grayscale(0);
+
+
+.project1 {
+	grid-column: 1 / span 2;
+	grid-row :  5 ;
+}
+
+.project1.interview-img {
+	grid-column : 5;
+}
+
+.project-item.project2 {
+	grid-column : 1 / span 4;
+}
+
+.project-item.project3 {
+	grid-column : 1 / span 4;
+}
+
+/*Daily Leetcode*/
+.leetcode {
+	border: 2px solid transparent;
+	outline: 3px solid var(--black);
+	box-shadow: inset 0 0 0 1px var(--black);
+	width: calc(100% - 4px);
+	margin: 1.5rem auto;
+	overflow: hidden;
+}
+@media (min-width: 700px) {
+	.leetcode {
+		margin: 0;
+	}
+}
+.leetcode__title {
+	font: 800 24px/1 var(--font-sans-serif);
+	text-transform: uppercase;
+	background: var(--black);
+	color: var(--gray);
+	padding: 0.8rem 0.8rem 0.9rem;
+	transition: 0.2s ease;
+}
+@media (min-width: 700px) and (max-width: 1024px) {
+	.leetcode__title {
+		font: 800 21px/1.2 var(--font-sans-serif);
+		padding: 1.5rem 0.5rem;
+	}
+}
+
+
+.leetcode__image {
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+	
+}
+
+.leetcode__image img {
+	position: absolute;
+    border: 0;
+    width: 40%; 
+    height: auto; 
+    transform-origin: center center;
+	transition: filter 0.3s ease; /* Smooth transition effect */
+}
+@media (min-width: 700px) and (max-width: 1024px) {
+	.leetcode__image img {
+		bottom: 120%;
+	}
+}
+
+.leetcode__image #jan-badge {
+    transform: translate(-100%, 300%) rotate(-10deg); 
+    z-index: 12;
+}
+
+.leetcode__image #feb-badge {
+    transform: translate(-40%, 260%) rotate(-10deg);
+    z-index: 11;
+}
+
+.leetcode__image #march-badge {
+    transform: translate(20%, 220%) rotate(-10deg); 
+    z-index: 10;
+}
+
+.leetcode__image #april-badge {
+    transform: translate(80%, 180%) rotate(-10deg); 
+    z-index: 9;
+}
+
+.leetcode__image #may-badge {
+    transform: translate(-100%, 400%) rotate(-10deg);
+    z-index: 8;
+}
+
+.leetcode__image #june-badge {
+    transform: translate(-40%, 360%) rotate(-10deg);
+    z-index: 7;
+}
+
+.leetcode__image #july-badge {
+    transform: translate(20%, 320%) rotate(-10deg);
+    z-index: 6;
+}
+
+.leetcode__image #aug-badge {
+    transform: translate(80%, 280%) rotate(-10deg);
+    z-index: 5;
+}
+
+.leetcode__image #sep-badge {
+    transform: translate(-100%, 500%) rotate(-10deg);
+    z-index: 4;
+}
+
+.leetcode__image #oct-badge {
+    transform: translate(-40%, 460%) rotate(-10deg);
+    z-index: 3;
+}
+
+.leetcode__image #nov-badge {
+    transform: translate(20%, 420%) rotate(-10deg);
+    z-index: 2;
+}
+
+.leetcode__image #dec-badge {
+    transform: translate(80%, 380%) rotate(-10deg);
+    z-index: 1;
+}
+
+
+.leetcode__image span {
+	font-style: italic;
+	max-width: 110px;
+	position: absolute;
+	top: 7%;
+	left: 18%;
+	font-size: 22px;
+	line-height: 0.9;
+	transform: rotate(-5deg);
+}
+
+.leetcode:hover .leetcode__title {
+	background: transparent;
+	color: var(--black);
+}
+
+/* .leetcode:hover .leetcode__image {
+	width: 100%;
+	filter: grayscale(95%);
+	margin-bottom: 0.5rem;
+	border: 1px solid var(--black);
+	transition: 0.3s ease;
+} */
+
+
+
+.leetcode__image:hover img {
+    filter: grayscale(0%); /* Remove grayscale on hover */
 }
