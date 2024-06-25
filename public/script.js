@@ -1,36 +1,31 @@
 document.addEventListener("DOMContentLoaded", async () => {
     async function fetchAndDisplayCommits() {
         try {
-            const response = await fetch("/commits");
-            const commitsData = await response.json();
+            const response = await fetch("/weekly-summary");
+            const data = await response.json();
 
             const activitiesContainer = document.querySelector("#github-activities .github__content");
-            activitiesContainer.innerHTML = "";
 
-            if (commitsData.length === 0) {
+            if (data.changed_repos === 0) {
                 activitiesContainer.innerHTML = "<p>No activities this week.</p>";
             } else {
-                commitsData.forEach(commit => {
-                    const repoElement = document.createElement("div");
-                    repoElement.className = "github__item";
-
-                    const repoName = document.createElement("h4");
-                    repoName.textContent = commit.repository;
-                    repoElement.appendChild(repoName);
-
-                    const commitList = document.createElement("ul");
-                    commit.commits.forEach(commitMessage => {
-                        const commitItem = document.createElement("li");
-                        commitItem.textContent = commitMessage;
-                        commitList.appendChild(commitItem);
-                    });
-
-                    repoElement.appendChild(commitList);
-                    activitiesContainer.appendChild(repoElement);
-                });
+                // Create and append the repository and commit count
+                const repoCommitInfo = document.createElement("div");
+                repoCommitInfo.innerHTML = `
+                    <p><strong>Repositories changed:</strong> ${data.changed_repos}</p>
+                    <p><strong>Total commits:</strong> ${data.total_commits}</p>
+                `;
+                activitiesContainer.appendChild(repoCommitInfo);
+                // Create and append the summary paragraph
+                const summaryParagraph = document.createElement("p");
+                summaryParagraph.textContent = data.summary;
+                activitiesContainer.appendChild(summaryParagraph);
+                
             }
         } catch (error) {
             console.error("Failed to fetch commit data:", error);
+            const activitiesContainer = document.querySelector("#github-activities .github__content");
+            activitiesContainer.innerHTML = "<p>Failed to load activities. Please try again later.</p>";
         }
     }
 
@@ -48,6 +43,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    fetchAndDisplayCommits();
+    //fetchAndDisplayCommits();
     fetchAndDisplayDate();
+
 });
