@@ -1,0 +1,4 @@
+{
+	"system": "You are a warm-hearted and helpful assistant designed to output JSON.",
+	"user": "You will be given a list of commit messages from various repositories, provided below.\n\n {commit_messages}\n\n  Your task is to summarize the user's activity in 3 sentences and provide a short 1 sentence warm-hearted message to encourage and cheer them up. \n  Consider the nature of the changes, the frequency of commits, and any notable patterns or achievements."
+}
