@@ -194,7 +194,7 @@ main aside {
 
 .with-border {
 	border-top: 1px solid;
-	padding-top: 0.6rem;
+	padding-top: 0rem;
 }
 
 img {
@@ -250,6 +250,15 @@ aside > div > div {
 	margin-top: 0.75rem;
 }
 
+.multi-column  p a {
+	border-bottom: 1px dashed;
+}
+
+.multi-column p a:hover {
+	border-bottom: 1px solid;
+}
+
+
 .sidebar {
 	margin-top: 3rem;
 }
@@ -274,7 +283,7 @@ aside > div > div {
 		padding: 0;
 	}
 
-	.sidebar .music {
+	.sidebar .weather {
 		border-top: 0;
 	}
 
@@ -507,17 +516,15 @@ aside > div > div {
 	grid-row :  5 ;
 }
 
-.project1.interview-img {
-	grid-column : 5;
+.project2 {
+	grid-column : 1 / span 2;
 }
 
-.project-item.project2 {
-	grid-column : 1 / span 4;
+.project2.toeic-image {
+	grid-column: 4;
 }
 
-.project-item.project3 {
-	grid-column : 1 / span 4;
-}
+
 
 /*Daily Leetcode*/
 .leetcode {
@@ -651,16 +658,27 @@ aside > div > div {
 	color: var(--black);
 }
 
-/* .leetcode:hover .leetcode__image {
-	width: 100%;
-	filter: grayscale(95%);
-	margin-bottom: 0.5rem;
-	border: 1px solid var(--black);
-	transition: 0.3s ease;
-} */
-
-
 
 .leetcode__image:hover img {
     filter: grayscale(0%); /* Remove grayscale on hover */
+}
+
+
+.fun-fact {
+	grid-column: 4;
+	grid-row: 5;
+	border: 2px solid #ccc; /* Example border for the fun-fact section */
+    padding: 15px;
+    margin: 10px 0;
+    display: block;
+    text-align: left;
+}
+
+
+.fun-fact p a {
+    border-bottom: 1px dashed; 
+}
+
+.fun-fact p a:hover {
+    border-bottom: 1px solid; /* Solid border on hover */
 }
