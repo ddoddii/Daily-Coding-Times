@@ -43,7 +43,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    //fetchAndDisplayCommits();
+    fetchAndDisplayCommits();
     fetchAndDisplayDate();
-
 });
