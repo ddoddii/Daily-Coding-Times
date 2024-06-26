@@ -3,8 +3,14 @@ import OpenAI from "openai";
 import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+const openai_api_key = process.env.OPENAI_API_KEY;
 
 const openai = new OpenAI();
+openai.api_key = openai_api_key;
 
 function loadPrompt() {
     const __filename = fileURLToPath(import.meta.url);
@@ -52,6 +58,7 @@ async function getSummary() {
     });
     //console.log(completion.choices[0].message.content);
     const weekly_summary = completion.choices[0].message.content;
+    console.log("Weekly github summary updated successfully.");
     return {weekly_summary,changed_repos,total_commits};
 }
 
