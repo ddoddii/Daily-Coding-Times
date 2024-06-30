@@ -13,9 +13,10 @@ const openai = new OpenAI();
 openai.api_key = openai_api_key;
 
 function loadPrompt() {
-    const file = fs.readFile(process.cwd() + '/prompt/summarize.json', 'utf8');
+    const filePath = path.join(process.cwd(), 'prompt', 'summarize.json');
+    const file = fs.readFileSync(filePath, 'utf8');
     const promptData = JSON.parse(file);
-    console.log("✅ : Prompt loaded successfully")
+    console.log("✅ : Prompt loaded successfully");
     return promptData;
 }
 
