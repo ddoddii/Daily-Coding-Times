@@ -53,8 +53,9 @@ app.get("/weekly-summary", async (req, res) => {
     }
 });
 
-
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
+
+export default app;
