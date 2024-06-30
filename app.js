@@ -32,21 +32,21 @@ setTimeout(() => {
 
 app.use(express.static("public"));
 
-app.get("/commits", async (req, res) => {
-    res.json(commits);
-});
+// app.get("/api/commits", async (req, res) => {
+//     res.json(commits);
+// });
 
-app.get("/current-date", (req, res) => {
+app.get("/api/current-date", (req, res) => {
     const currentDate = getCurrentDate();
     res.json({ currentDate });
 });
 
-app.get("/weekly-summary", async (req, res) => {
+app.get("/api/weekly-summary", async (req, res) => {
     try {
         const { weekly_summary, changed_repos, total_commits } = await getSummary();
         res.json({ "summary": weekly_summary, "changed_repos": changed_repos,"total_commits": total_commits });
     } catch (error) {
-        console.error("Error in /weekly-summary endpoint:", error);
+        console.error("Error in /api/weekly-summary endpoint:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
