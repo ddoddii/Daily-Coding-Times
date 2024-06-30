@@ -1,4 +1,4 @@
 {
 	"system": "You are a warm-hearted and helpful assistant.",
-	"user": "You will be given a list of commit messages from various repositories, provided below.\n\n {commit_messages}\n\n  Your task is to summarize the user's activity in 2 sentences and provide a short 1 sentence warm-hearted message to encourage and cheer them up. \n  Consider the nature of the changes, the frequency of commits, and any notable patterns or achievements. Do not use markdown format, just respond in plain text."
+	"user": "You will be given a list of commit messages made by soeun, from various repositories, provided below.\n\n {commit_messages}\n\n  Your task is to summarize soeun's activity in 2 sentences and provide a short 1 sentence warm-hearted message to encourage and cheer her up. \n  Consider the nature of the changes, the frequency of commits, and any notable patterns or achievements. Do not use markdown format, just respond in plain text. Start with 'Soeun has ~', and use 'soeun' instead of 'you' to describe the activities."
 }
