@@ -4,8 +4,9 @@
 	"description": "daily coding times",
 	"main": "app.js",
 	"scripts": {
-		"dev": "nodemon app.js",
-		"start": "node app.js"
+		"dev": "nodemon api/index.js",
+		"start": "node api/index.js",
+		"vercel-build": "node api/index.js"
 	},
 	"author": "soeun",
 	"license": "ISC",
