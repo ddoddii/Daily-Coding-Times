@@ -494,6 +494,7 @@ aside > div > div {
 .mypicture:hover img,
 .project1:hover img,
 .project2:hover img,
+.project3:hover img,
 .cssgrid-collection__image:hover img {
 	filter: grayscale(0);
 }
@@ -512,7 +513,6 @@ aside > div > div {
 }
 
 
-
 .project1 {
 	grid-column: 1 / span 2;
 	grid-row :  5 ;
@@ -526,6 +526,19 @@ aside > div > div {
 	grid-column: 4;
 }
 
+.project3 {
+	grid-column: 3 / span 2;
+}
+
+
+.project3 p a {
+	grid-column: 3 / span 2;
+    border-bottom: 1px dashed; 
+}
+
+.project3 p a:hover {
+    border-bottom: 1px solid; 
+}
 
 
 /*Daily Leetcode*/
@@ -662,16 +675,16 @@ aside > div > div {
 
 
 .leetcode__image:hover img {
-    filter: grayscale(0%); /* Remove grayscale on hover */
+    filter: grayscale(0%);
 }
 
 
 .fun-fact {
 	grid-column: 4;
 	grid-row: 5;
-	border: 2px solid #ccc; /* Example border for the fun-fact section */
+	border: 2px solid #ccc; 
     padding: 15px;
-    margin: 10px 0;
+    margin: 0px 0;
     display: block;
     text-align: left;
 }
@@ -682,5 +695,5 @@ aside > div > div {
 }
 
 .fun-fact p a:hover {
-    border-bottom: 1px solid; /* Solid border on hover */
+    border-bottom: 1px solid; 
 }
