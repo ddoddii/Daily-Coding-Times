@@ -13,12 +13,9 @@ const openai = new OpenAI();
 openai.api_key = openai_api_key;
 
 function loadPrompt() {
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-
-    const filePath = path.resolve(__dirname, '../prompt/summarize.json');
-    const fileContent = fs.readFileSync(filePath, 'utf8');
-    const promptData = JSON.parse(fileContent);
+    const file = fs.readFile(process.cwd() + '/prompt/summarize.json', 'utf8');
+    const promptData = JSON.parse(file);
+    console.log("✅ : Prompt loaded successfully")
     return promptData;
 }
 
@@ -28,17 +25,17 @@ function formatPromptForAllRepos(promptTemplate, allRepoData) {
         const { repository, commits } = repoData;
         const commitMessages = commits.join('\n');
         return `Repo: ${repository}\nCommits:\n${commitMessages}`;
-    }).join('\n\n'); // Separate each repository's data with a double newline
+    }).join('\n\n');
+
+    console.log("✅ : Prompt formatted successfully")
 
     return promptTemplate
         .replace('{commit_messages}', formattedCommitData);
 }
 
 async function getSummary() {
-    // user commits 
     const commitData = await fetchCommitData();
 
-    // handle no commits this week
     if (commitData.length === 0) {
         return { summary: "No commit data this week.", changed_repos: 0, total_commits: 0 };
     }
@@ -56,9 +53,8 @@ async function getSummary() {
     ],
     model: "gpt-4o",
     });
-    //console.log(completion.choices[0].message.content);
     const weekly_summary = completion.choices[0].message.content;
-    console.log("Weekly github summary updated successfully.");
+    console.log("✅ : Weekly github summary updated successfully");
     return {weekly_summary,changed_repos,total_commits};
 }
 
