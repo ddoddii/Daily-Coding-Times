@@ -2,7 +2,7 @@
 	"name": "daily-coding-times",
 	"version": "1.0.0",
 	"description": "daily coding times",
-	"main": "app.js",
+	"main": "index.js",
 	"scripts": {
 		"dev": "nodemon api/index.js",
 		"start": "node api/index.js",

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async () => {
     async function fetchAndDisplayCommits() {
         try {
-            const response = await fetch("/api/weekly-summary");
+            const response = await fetch("/weekly-summary");
             const data = await response.json();
 
             const activitiesContainer = document.querySelector("#github-activities .github__content");
@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     async function fetchAndDisplayDate() {
         try {
-            const response = await fetch("/api/current-date");
+            const response = await fetch("/current-date");
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
