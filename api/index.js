@@ -3,6 +3,9 @@ import { fetchCommitData } from "../src/commit.js";
 import { getCurrentDate } from "../src/date.js";
 import { getSummary } from "../src/summary.js";
 import { getCurrentWeather } from "../src/weather.js";
+import { inject } from '@vercel/analytics';
+
+inject();
 
 const app = express();
 app.use(express.json());

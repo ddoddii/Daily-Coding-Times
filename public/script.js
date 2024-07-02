@@ -1,7 +1,3 @@
-import { inject } from '@vercel/analytics';
-
-inject();
-
 document.addEventListener("DOMContentLoaded", async () => {
     async function fetchAndDisplayCommits() {
         try {
