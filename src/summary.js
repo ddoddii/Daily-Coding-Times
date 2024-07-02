@@ -2,7 +2,6 @@ import { fetchCommitData } from "./commit.js";
 import OpenAI from "openai";
 import path from 'path';
 import fs from 'fs';
-import { fileURLToPath } from 'url';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -59,5 +58,4 @@ async function getSummary() {
     return {weekly_summary,changed_repos,total_commits};
 }
 
-getSummary();
 export {getSummary};
