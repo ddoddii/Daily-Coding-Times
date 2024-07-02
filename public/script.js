@@ -9,14 +9,13 @@ document.addEventListener("DOMContentLoaded", async () => {
             if (data.changed_repos === 0) {
                 activitiesContainer.innerHTML = "<p>No activities this week.</p>";
             } else {
-                // Create and append the repository and commit count
                 const repoCommitInfo = document.createElement("div");
                 repoCommitInfo.innerHTML = `
                     <p><strong>Repositories changed:</strong> ${data.changed_repos}</p>
                     <p><strong>Total commits:</strong> ${data.total_commits}</p>
                 `;
                 activitiesContainer.appendChild(repoCommitInfo);
-                // Create and append the summary paragraph
+                
                 const summaryParagraph = document.createElement("p");
                 summaryParagraph.textContent = data.summary;
                 activitiesContainer.appendChild(summaryParagraph);
@@ -43,6 +42,27 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
+    async function fetchAndDisplayWeather() {
+        try {
+            const response = await fetch("/api/current-weather.js");
+            const data = await response.json();
+
+            const weatherContainer = document.querySelector("#weather .weather__content");
+            weatherContainer.innerHTML = `
+                <div class="weather__info">
+                    <img src="${data.weatherImagePath}" alt="${data.currentWeather} image">
+                    <div class="weather__details">
+                        <p><strong>Weather</strong> : ${data.currentWeather}</p>
+                        <p><strong>Temperature</strong> : ${data.tempInCelcius} °C</p>
+                    </div>
+                </div>
+                `;
+        } catch (error) {
+            console.error("Failed to fetch current weather:", error);
+        }
+    };
+
     fetchAndDisplayCommits();
     fetchAndDisplayDate();
+    fetchAndDisplayWeather();
 });

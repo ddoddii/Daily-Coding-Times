@@ -2,6 +2,7 @@ import express from "express";
 import { fetchCommitData } from "../src/commit.js";
 import { getCurrentDate } from "../src/date.js";
 import { getSummary } from "../src/summary.js";
+import { getCurrentWeather } from "../src/weather.js";
 
 const app = express();
 app.use(express.json());
@@ -52,6 +53,16 @@ app.get("/weekly-summary", async (req, res) => {
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
+
+app.get("/current-weather", async (req,res) => {
+    try {
+        const { currentWeather, currentWeatherDescription, tempInCelcius, weatherImagePath } = await getCurrentWeather();
+        res.status(200).json({ currentWeather, currentWeatherDescription, tempInCelcius, weatherImagePath });
+    } catch (error) {
+        console.error("Error in /current-weather endpoint:", error);
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+})
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {

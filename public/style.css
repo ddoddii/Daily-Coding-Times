@@ -579,7 +579,6 @@ aside > div > div {
     justify-content: center;
     flex-wrap: wrap;
     margin: auto;
-	
 }
 
 .leetcode__image img {
@@ -588,7 +587,7 @@ aside > div > div {
     width: 40%; 
     height: auto; 
     transform-origin: center center;
-	transition: filter 0.3s ease; /* Smooth transition effect */
+	transition: filter 0.3s ease;
 }
 @media (min-width: 700px) and (max-width: 1024px) {
 	.leetcode__image img {
@@ -696,4 +695,33 @@ aside > div > div {
 
 .fun-fact p a:hover {
     border-bottom: 1px solid; 
+}
+
+/*Weather*/
+.weather__info {
+    display: flex;
+    align-items: center;
+}
+
+.weather__info img {
+	border: 0;
+    width: 50%; 
+    height: auto; 
+    margin-right: 20px; 
+	transition: filter 0.3s ease;
+}
+
+.weather__details {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 700px) and (max-width: 1024px) {
+    .weather__info img {
+        width: 15%; 
+    }
+}
+
+.weather__info:hover img {
+    filter: grayscale(0%);
 }
