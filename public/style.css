@@ -338,6 +338,7 @@ aside > div > div {
 	line-height: 0;
 	color: var(--gray);
 	text-align: left;
+	margin-bottom: 30px;
 }
 
 .github__image {
@@ -373,7 +374,6 @@ aside > div > div {
 
 .sidebar-item h5 {
 	text-align: center;
-	width: 100%;
 	padding: 0.5rem;
 	margin: auto;
 }
@@ -442,16 +442,68 @@ aside > div > div {
 	border-bottom: 1px solid;
 }
 
-/*Github trending */
-.trending {
-	margin-top: 0;
+
+
+/* Github trending */
+.github-trending {
+	margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.github-trending h5 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.github-trending .trending__content {
+    font-size: 14px;
+	margin-top: 10px;
+}
+
+.trending-repo {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.trending-repo:last-child {
+    border-bottom: none;
+}
+
+.trending-repo a {
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #586069;
+    text-decoration: none;
+    margin-bottom: 5px;
+	transition: color 0.3s ease; 
+}
+
+.trending-repo a:hover {
+	color: #0366d6; 
+    text-decoration: underline;
+	filter: grayscale(0%);
+}
+
+.trending-repo p {
+    margin: 0;
+    font-size: 14px;
+    color: #586069;
 }
 
 @media (min-width: 1024px) {
-	.trending {
-		margin-top: 0;
-	}
+    .github-trending {
+        margin-top: 0;
+    }
 }
+
 
 /*Tech News*/
 .tech {
