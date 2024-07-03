@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         try {
             const response = await fetch("/api/weekly-github-trend.js");
             const data = await response.json();
-            console.log(data);
 
             const trendingContainer = document.querySelector("#github-trending .trending__content");
             trendingContainer.innerHTML = '';
@@ -92,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    fetchAndDisplayCommits();
+    //fetchAndDisplayCommits();
     fetchAndDisplayDate();
     fetchAndDisplayWeather();
     fetchAndDisplayGithubTrending();

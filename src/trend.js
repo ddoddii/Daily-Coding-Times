@@ -18,12 +18,11 @@ async function getTrendingRepos() {
         
         const name = nameElement.href.slice(1);
         const href = 'https://github.com/' + name;
-        const description = descriptionElement ? descriptionElement.textContent.trim() : 'No description available';
+        const description = descriptionElement ? descriptionElement.textContent.trim() : '';
 
         repos.push({ name, href, description });
     }
-
-    return repos;
+    return {repos};
 }
 
 export {getTrendingRepos};
