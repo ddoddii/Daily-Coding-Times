@@ -23,5 +23,10 @@
 		"vercel": "^34.3.0",
 		"ytmusic-api": "^5.2.1"
 	},
-	"type": "module"
+	"type": "module",
+	"devDependencies": {
+		"@eslint/js": "^9.6.0",
+		"eslint": "^9.6.0",
+		"globals": "^15.8.0"
+	}
 }
