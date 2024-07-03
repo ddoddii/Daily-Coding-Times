@@ -3,6 +3,7 @@ import { fetchCommitData } from "../src/commit.js";
 import { getCurrentDate } from "../src/date.js";
 import { getSummary } from "../src/summary.js";
 import { getCurrentWeather } from "../src/weather.js";
+import { getTrendingRepos } from "../src/trend.js";
 import { inject } from '@vercel/analytics';
 
 inject();
@@ -62,8 +63,19 @@ app.get("/current-weather", async (req,res) => {
         const { currentWeather, currentWeatherDescription, tempInCelcius, weatherImagePath } = await getCurrentWeather();
         res.status(200).json({ currentWeather, currentWeatherDescription, tempInCelcius, weatherImagePath });
     } catch (error) {
-        console.error("Error in /current-weather endpoint:", error);
+        console.error("Error in /current-weather endpoint: ", error);
         res.status(500).json({ error: "Internal Server Error" });
+    }
+})
+
+app.get("/weekly-github-trend", async (req,res) => {
+    try {
+        const repos = await getTrendingRepos();
+        console.log("✅ : Github Trend updated successfully")
+        res.status(200).json({repos});
+    } catch (error) {
+        console.error("Error in /weekly-github-trend endpoint: ", error);
+        res.status(500).json({error : "Internal Server Error"});
     }
 })
 

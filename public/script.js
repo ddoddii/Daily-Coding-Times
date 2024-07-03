@@ -62,7 +62,38 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     };
 
+    async function fetchAndDisplayGithubTrending() {
+        try {
+            const response = await fetch("/api/weekly-github-trend.js");
+            const data = await response.json();
+            console.log(data);
+
+            const trendingContainer = document.querySelector("#github-trending .trending__content");
+            trendingContainer.innerHTML = '';
+
+            data.repos.forEach(repo => {
+                const repoElement = document.createElement('div');
+                repoElement.classList.add('trending-repo');
+                
+                const repoLink = document.createElement('a');
+                repoLink.href = repo.href;
+                repoLink.target = '_blank';
+                repoLink.textContent = repo.name;
+                
+                const repoDescription = document.createElement('p');
+                repoDescription.textContent = repo.description;
+                
+                repoElement.appendChild(repoLink);
+                repoElement.appendChild(repoDescription);
+                trendingContainer.appendChild(repoElement);
+            });
+        } catch (error) {
+            console.error("Failed to fetch github trending :", error);
+        }
+    }
+
     fetchAndDisplayCommits();
     fetchAndDisplayDate();
     fetchAndDisplayWeather();
+    fetchAndDisplayGithubTrending();
 });
