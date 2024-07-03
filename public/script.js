@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    //fetchAndDisplayCommits();
+    fetchAndDisplayCommits();
     fetchAndDisplayDate();
     fetchAndDisplayWeather();
     fetchAndDisplayGithubTrending();
