@@ -2,6 +2,7 @@ import axios from "axios";
 import dotenv from 'dotenv';
 import { fileURLToPath } from 'url';
 import { dirname,join } from 'path';
+import config from '../config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -30,7 +31,7 @@ async function getCurrentWeather() {
 		params: {
 			lat: lat,
 			lon: lon,
-			appid: process.env.OPENWEATHER_API_KEY,
+			appid: config.OpenWeatherApiKey,
 		}
 	});
 	const currentWeather = res.data['weather'][0]['main'];
