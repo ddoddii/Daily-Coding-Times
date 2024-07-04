@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 
 
-function loadPrompt() {
+export function loadPrompt() {
     const filePath = path.join(process.cwd(), 'prompt', 'summarize.json');
     const file = fs.readFileSync(filePath, 'utf8');
     const promptData = JSON.parse(file);
@@ -12,7 +12,7 @@ function loadPrompt() {
 }
 
 
-function formatPromptForAllRepos(promptTemplate, allRepoData) {
+export function formatPromptForAllRepos(promptTemplate, allRepoData) {
     let formattedCommitData = allRepoData.map(repoData => {
         const { repository, commits } = repoData;
         const commitMessages = commits.join('\n');
@@ -25,8 +25,9 @@ function formatPromptForAllRepos(promptTemplate, allRepoData) {
         .replace('{commit_messages}', formattedCommitData);
 }
 
-async function getSummary(openai) {
+export async function getSummary(openai) {
     const commitData = await fetchCommitData();
+    console.log("✅ Fetched Commit Data : ", commitData);
 
     if (commitData.length === 0) {
         return { summary: "No commit data this week.", changed_repos: 0, total_commits: 0 };
@@ -50,5 +51,3 @@ async function getSummary(openai) {
     return {weekly_summary,changed_repos,total_commits};
 }
 
-
-export {getSummary};

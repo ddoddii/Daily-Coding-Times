@@ -6,6 +6,8 @@ dotenv.config();
 const token = process.env.GITHUB_TOKEN;
 const username = process.env.USERNAME;
 
+console.log("✅ Token and Username fetched : ", token, username);
+
 const octokit = new Octokit({
     auth: token,
 });
