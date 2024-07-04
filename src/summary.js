@@ -1,15 +1,7 @@
 import { fetchCommitData } from "./commit.js";
-import OpenAI from "openai";
 import path from 'path';
 import fs from 'fs';
-import dotenv from 'dotenv';
 
-dotenv.config();
-
-const openai_api_key = process.env.OPENAI_API_KEY;
-
-const openai = new OpenAI();
-openai.api_key = openai_api_key;
 
 function loadPrompt() {
     const filePath = path.join(process.cwd(), 'prompt', 'summarize.json');
@@ -33,7 +25,7 @@ function formatPromptForAllRepos(promptTemplate, allRepoData) {
         .replace('{commit_messages}', formattedCommitData);
 }
 
-async function getSummary() {
+async function getSummary(openai) {
     const commitData = await fetchCommitData();
 
     if (commitData.length === 0) {
@@ -57,5 +49,6 @@ async function getSummary() {
     console.log("✅ : Weekly github summary updated successfully");
     return {weekly_summary,changed_repos,total_commits};
 }
+
 
 export {getSummary};
