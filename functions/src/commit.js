@@ -6,8 +6,6 @@ dotenv.config();
 const token = process.env.GITHUB_TOKEN;
 const username = process.env.USERNAME;
 
-console.log("✅ Token and Username fetched : ", token, username);
-
 const octokit = new Octokit({
     auth: token,
 });
@@ -17,7 +15,6 @@ function getCurrentWeekRange() {
     const startOfWeek = new Date(today);
     startOfWeek.setDate(today.getDate() - 6); 
     const endOfWeek = new Date(today); 
-    
     return { startOfWeek, endOfWeek };
 }
 
