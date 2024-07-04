@@ -1,7 +1,7 @@
 import express from "express";
 import { fetchCommitData } from "../src/commit.js";
 import { getCurrentDate } from "../src/date.js";
-import { getSummary } from "../src/summary.js";
+import { fetchSummaryFromFirestore} from "../src/summary.js";
 import { getCurrentWeather } from "../src/weather.js";
 import { getTrendingRepos } from "../src/trend.js";
 import { inject } from '@vercel/analytics';
@@ -50,8 +50,8 @@ app.get("/current-date", (req, res) => {
 
 app.get("/weekly-summary", async (req, res) => {
     try {
-        const { weekly_summary, changed_repos, total_commits } = await getSummary();
-        res.json({ "summary": weekly_summary, "changed_repos": changed_repos,"total_commits": total_commits });
+        const data  = await fetchSummaryFromFirestore();
+        res.json({ "summary": data.summary, "changed_repos": data.changed_repos,"total_commits": data.total_commits });
     } catch (error) {
         console.error("Error in /weekly-summary endpoint:", error);
         res.status(500).json({ error: "Internal Server Error" });
