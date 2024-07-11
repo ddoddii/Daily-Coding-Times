@@ -103,6 +103,8 @@ async function fetchCommitData() {
         }
     }
 
+    console.log("@@functions/src/commit.js : Commits fetched ");
+
     return summary;
 }
 

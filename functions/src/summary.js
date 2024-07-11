@@ -7,7 +7,7 @@ export function loadPrompt() {
     const filePath = path.join(process.cwd(), 'prompt', 'summarize.json');
     const file = fs.readFileSync(filePath, 'utf8');
     const promptData = JSON.parse(file);
-    console.log("✅ : Prompt loaded successfully");
+    console.log("@@functions/src/summary.js : Prompt loaded successfully");
     return promptData;
 }
 
@@ -19,7 +19,7 @@ export function formatPromptForAllRepos(promptTemplate, allRepoData) {
         return `Repo: ${repository}\nCommits:\n${commitMessages}`;
     }).join('\n\n');
 
-    console.log("✅ : Prompt formatted successfully")
+    console.log("@@functions/src/summary.js : Prompt formatted successfully")
 
     return promptTemplate
         .replace('{commit_messages}', formattedCommitData);
@@ -27,7 +27,7 @@ export function formatPromptForAllRepos(promptTemplate, allRepoData) {
 
 export async function getSummary(openai) {
     const commitData = await fetchCommitData();
-    console.log("✅ Fetched Commit Data : ", commitData);
+    console.log("@@functions/src/summary.js Fetched Commit Data : ", commitData);
 
     if (commitData.length === 0) {
         return { summary: "No commit data this week.", changed_repos: 0, total_commits: 0 };
@@ -47,7 +47,7 @@ export async function getSummary(openai) {
     model: "gpt-4o",
     });
     const weekly_summary = completion.choices[0].message.content;
-    console.log("✅ : Weekly github summary updated successfully");
+    console.log("@@functions/src/summary.js : Weekly github summary updated successfully");
     return {weekly_summary,changed_repos,total_commits};
 }
 
