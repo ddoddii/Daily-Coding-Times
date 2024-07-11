@@ -1,8 +1,8 @@
-import { getTrendingRepos } from "../src/trend.js";
+import {fetchTrendingFromFireStore } from "../src/trend.js";
 
 export default async (req, res) => {
     try {
-        const { repos } = await getTrendingRepos();
+        const  repos  = await fetchTrendingFromFireStore();
         console.log("✅ : Github Trend updated successfully @vercel")
         res.status(200).json({ repos });
     } catch (error) {

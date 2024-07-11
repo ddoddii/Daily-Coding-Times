@@ -1,28 +1,23 @@
-import fetch from 'node-fetch';
-import { JSDOM } from 'jsdom';
+import { db } from '../database/firebase.js'; 
+import { collection, getDocs, query, orderBy, limit } from "firebase/firestore";
 
-async function getTrendingRepos() {
-    const url = 'https://github.com/trending?since=weekly&spoken_language_code=';
-    const response = await fetch(url);
-    const text = await response.text();
-    const dom = new JSDOM(text);
-    const document = dom.window.document;
+async function fetchTrendingFromFireStore() {
+    try {
+        const repoCollection = collection(db, 'github-trend');
+        const repoQuery = query(repoCollection, orderBy("date", "desc"), limit(10));
+        const querySnapshot = await getDocs(repoQuery);
 
-    const repos = [];
-    const repoElements = document.querySelectorAll('article.Box-row');
-
-    for (let i = 0; i < 10 && i < repoElements.length; i++) {
-        const repoElement = repoElements[i];
-        const nameElement = repoElement.querySelector('h2 a');
-        const descriptionElement = repoElement.querySelector('p');
+        const repos = [];
+        querySnapshot.forEach(doc => {
+            repos.push(doc.data());
+        });
         
-        const name = nameElement.href.slice(1);
-        const href = 'https://github.com/' + name;
-        const description = descriptionElement ? descriptionElement.textContent.trim() : '';
-
-        repos.push({ name, href, description });
+        console.log("✅ @src/trend.js : Fetch trening from firestore success")
+        return repos;
+    } catch (error) {
+        console.error("@src/trend.js : Failed to fetch trend data from Firestore:", error);
+        throw new Error("@src/trend.js : Failed to fetch trend data from Firestore.");
     }
-    return {repos};
 }
 
-export {getTrendingRepos};
+export {fetchTrendingFromFireStore};
