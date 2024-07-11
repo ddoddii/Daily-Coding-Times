@@ -22,7 +22,7 @@
         "octokit": "^4.0.2",
         "openai": "^4.52.0",
         "spotify-web-api-node": "^5.0.2",
-        "vercel": "^34.3.0",
+        "vercel": "^34.3.1",
         "ytmusic-api": "^5.2.1"
     },
     "type": "module",
