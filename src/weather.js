@@ -21,6 +21,7 @@ const weatherImages = {
     Fog: 'images/weather/Fog.png',
 	Mist: 'images/weather/Fog.png',
 	Moon : 'images/weather/Full Moon Face.png',
+	Thunderstorm : 'images/weather/Thunderstorm.png'
 };
 
 const timeImages = {
